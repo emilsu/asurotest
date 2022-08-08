@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CalcAsuroController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="index")
      */
     public function index(): JsonResponse
     {
