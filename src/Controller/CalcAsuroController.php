@@ -78,4 +78,34 @@ class CalcAsuroController extends AbstractController
         $message = $num1 - $num2;
         return $this->json(\compact('error', 'message'));
     }
+
+    /**
+     * @Route("/mul", name="mulnone")
+     */
+    public function mulNone(): JsonResponse
+    {
+        $error = false;
+        $message = 'Please add two arguments to endpoint e.g. /mul/3/2';
+        return $this->json(\compact('error', 'message'));
+    }
+
+    /**
+     * @Route("/mul/{num1}", name="mulone")
+     */
+    public function mulOne(int $num1): JsonResponse
+    {
+        $error = false;
+        $message = 'Please add second argument to endpoint e.g. /mul/3/2';
+        return $this->json(\compact('error', 'message'));
+    }
+
+    /**
+     * @Route("/mul/{num1}/{num2}", name="mul")
+     */
+    public function mul(int $num1, int $num2): JsonResponse
+    {
+        $error = false;
+        $message = $num1 * $num2;
+        return $this->json(\compact('error', 'message'));
+    }
 }
