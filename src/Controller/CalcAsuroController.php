@@ -25,7 +25,7 @@ class CalcAsuroController extends AbstractController
     public function addNone(): JsonResponse
     {
         $error = false;
-        $message = 'Please add two arguments to endpoint e.g. /add/3/2';
+        $message = 'Please add two arguments to addition endpoint e.g. /add/3/2';
         return $this->json(\compact('error', 'message'));
     }
 
@@ -35,7 +35,7 @@ class CalcAsuroController extends AbstractController
     public function addOne(int $num1): JsonResponse
     {
         $error = false;
-        $message = 'Please add second argument to endpoint e.g. /add/3/2';
+        $message = 'Please add second argument to addition endpoint e.g. /add/3/2';
         return $this->json(\compact('error', 'message'));
     }
 
@@ -55,7 +55,7 @@ class CalcAsuroController extends AbstractController
     public function subNone(): JsonResponse
     {
         $error = false;
-        $message = 'Please add two arguments to endpoint e.g. /sub/3/2';
+        $message = 'Please add two arguments to substraction endpoint e.g. /sub/3/2';
         return $this->json(\compact('error', 'message'));
     }
 
@@ -65,7 +65,7 @@ class CalcAsuroController extends AbstractController
     public function subOne(int $num1): JsonResponse
     {
         $error = false;
-        $message = 'Please add second argument to endpoint e.g. /sub/3/2';
+        $message = 'Please add second argument to substraction endpoint e.g. /sub/3/2';
         return $this->json(\compact('error', 'message'));
     }
 
@@ -85,7 +85,7 @@ class CalcAsuroController extends AbstractController
     public function mulNone(): JsonResponse
     {
         $error = false;
-        $message = 'Please add two arguments to endpoint e.g. /mul/3/2';
+        $message = 'Please add two arguments to multiplication endpoint e.g. /mul/3/2';
         return $this->json(\compact('error', 'message'));
     }
 
@@ -95,7 +95,7 @@ class CalcAsuroController extends AbstractController
     public function mulOne(int $num1): JsonResponse
     {
         $error = false;
-        $message = 'Please add second argument to endpoint e.g. /mul/3/2';
+        $message = 'Please add second argument to multiplication endpoint e.g. /mul/3/2';
         return $this->json(\compact('error', 'message'));
     }
 
@@ -106,6 +106,41 @@ class CalcAsuroController extends AbstractController
     {
         $error = false;
         $message = $num1 * $num2;
+        return $this->json(\compact('error', 'message'));
+    }
+
+    /**
+     * @Route("/div", name="divnone")
+     */
+    public function divNone(): JsonResponse
+    {
+        $error = false;
+        $message = 'Please add two arguments to division endpoint e.g. /div/3/2';
+        return $this->json(\compact('error', 'message'));
+    }
+
+    /**
+     * @Route("/div/{num1}", name="divone")
+     */
+    public function divOne(int $num1): JsonResponse
+    {
+        $error = false;
+        $message = 'Please add second argument to division endpoint e.g. /div/3/2';
+        return $this->json(\compact('error', 'message'));
+    }
+
+    /**
+     * @Route("/div/{num1}/{num2}", name="div")
+     */
+    public function div(int $num1, int $num2): JsonResponse
+    {
+        if ($num2 == 0) {
+            $error = true;
+            $message = 'Do not divide by 0!';
+        } else {
+            $error = false;
+            $message = $num1 / $num2;
+        }
         return $this->json(\compact('error', 'message'));
     }
 }
